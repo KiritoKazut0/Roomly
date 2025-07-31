@@ -25,7 +25,7 @@ const AboutPage: React.FC = () => {
     {
       name: "María González",
       position: "CEO & Fundadora",
-      image: "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=300&h=300&fit=crop&crop=face",
+      image: "https://i.pinimg.com/736x/07/d7/66/07d7661566df51a8bcdb073885cb3fc0.jpg",
       description: "Líder visionaria con más de 15 años de experiencia en tecnología y negocios."
     },
     {

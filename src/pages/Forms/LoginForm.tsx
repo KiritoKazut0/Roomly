@@ -46,15 +46,14 @@ export default function LoginForm() {
         savedDataUser(result)
         setTimeout(() => {
           navigate('/residents')
-        })
+        }, 500)
       } else {
         setIsLoading(false)
         setErrorMessage('Error desconocido al iniciar sesión.')
       }
 
     } catch (error) {
-
-      console.log(error)
+      
       setIsLoading(false)
       if (error instanceof Error) {
         setErrorMessage(error.message)
