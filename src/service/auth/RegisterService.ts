@@ -4,11 +4,11 @@ import type { AuthResponse } from "../../types/dtos/auth/AuthResponse.dto";
 import { BASE_URL } from "../../core/BaseUrl";
 
 
-export const loginService = async (
+export const RegisterService = async (
     { email, password, lastName, name, phone, rol }: AuthRegisterDto
 ): Promise<AuthResponse> => {
     try {
-        const response = await axios.post<AuthResponse>(`${BASE_URL}/auth/login`, {
+        const response = await axios.post<AuthResponse>(`${BASE_URL}/auth/register`, {
             name,
             lastName,
             phone,

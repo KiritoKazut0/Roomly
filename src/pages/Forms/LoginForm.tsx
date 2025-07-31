@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { useState } from 'react';
 import { CssVarsProvider } from '@mui/joy/styles';
 import GlobalStyles from '@mui/joy/GlobalStyles';
 import CssBaseline from '@mui/joy/CssBaseline';
@@ -15,26 +15,60 @@ import Typography from '@mui/joy/Typography';
 import Stack from '@mui/joy/Stack';
 import GoogleIcon from '../../components/icons/GoogleIcon';
 import BedIcon from '@mui/icons-material/Bed';
+import useField from '../../hooks/useFields';
 import ImageLoginForm from '../../assets/ImageLoginForm.jpg';
-
-
+import { useNavigate} from 'react-router-dom';
+import { loginService } from '../../service/auth/LoginService';
+import { useAuthGuard } from '../../hooks/useAuthGuard';
+import ErrorMessage from '../../components/ui/Errors/ErrorMessage';
 
 export default function LoginForm() {
-    // esto es un ejemplo, se optara para usar un gancho personalizado para manejar el estado del formulario
-  // y la validación en una aplicación real.
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    const formData = new FormData(event.currentTarget);
-    const data = {
-      email: formData.get('email') as string,
-      password: formData.get('password') as string,
-      persistent: formData.get('persistent') === 'on',
-    };
-    alert(JSON.stringify(data, null, 2));
-  };
+  const { login: savedDataUser } = useAuthGuard()
+
+  const email = useField({ type: 'email' })
+  const password = useField({ type: 'password' })
+  const [errorMessage, setErrorMessage] = useState<string>('')
+  const [isLoading, setIsLoading] = useState(false)
+  const navigate = useNavigate()
+
+  const handlerClick = async (event: React.FormEvent<HTMLFormElement>) => {
+    try {
+      event.preventDefault()
+      setIsLoading(true)
+      setErrorMessage('')
+
+      const result = await loginService({
+        email: email.value,
+        password: password.value
+      })
+
+      if (result) {
+        savedDataUser(result)
+        setTimeout(() => {
+          navigate('/residents')
+        }, 500)
+      } else {
+        setIsLoading(false)
+        setErrorMessage('Error desconocido al iniciar sesión.')
+      }
+
+    } catch (error) {
+      
+      setIsLoading(false)
+      if (error instanceof Error) {
+        setErrorMessage(error.message)
+      } else {
+        setErrorMessage('Error desconocido al iniciar sesión.')
+      }
+    }
+  }
 
   return (
-    <CssVarsProvider disableTransitionOnChange>
+    <CssVarsProvider
+      colorSchemeStorageKey={undefined}
+      modeStorageKey={undefined}
+      disableTransitionOnChange
+    >
       <CssBaseline />
       <GlobalStyles
         styles={{
@@ -106,7 +140,7 @@ export default function LoginForm() {
                   Sign in
                 </Typography>
                 <Typography level="body-sm">
-                  New on our platform?{' '}
+                  New to company?{' '}
                   <Link href="#replace-with-a-link" level="title-sm">
                     Sign up!
                   </Link>
@@ -129,15 +163,52 @@ export default function LoginForm() {
               or
             </Divider>
             <Stack sx={{ gap: 4, mt: 2 }}>
-              <form onSubmit={handleSubmit}>
-                <FormControl required>
+              {errorMessage && (
+                <ErrorMessage
+                  message={errorMessage}
+                  type="error"
+                  dismissible={true}
+                  onDismiss={() => setErrorMessage('')}
+                />
+              )}
+              
+              <form onSubmit={handlerClick}>
+                <FormControl
+                  onBlur={email.onBlur}
+                  onChange={email.onChange}
+                  required
+                >
                   <FormLabel>Email</FormLabel>
                   <Input type="email" name="email" />
                 </FormControl>
-                <FormControl required>
+                
+                {email.messageError && (
+                  <ErrorMessage
+                    message={email.messageError}
+                    type="error"
+                    variant="outlined"
+                    sx={{ mt: 0.5 }}
+                  />
+                )}
+                
+                <FormControl
+                  onBlur={password.onBlur}
+                  onChange={password.onChange}
+                  required
+                >
                   <FormLabel>Password</FormLabel>
                   <Input type="password" name="password" />
                 </FormControl>
+                
+                {password.messageError && (
+                  <ErrorMessage
+                    message={password.messageError}
+                    type="error"
+                    variant="outlined"
+                    sx={{ mt: 0.5 }}
+                  />
+                )}
+                
                 <Stack sx={{ gap: 4, mt: 2 }}>
                   <Box
                     sx={{
@@ -151,7 +222,12 @@ export default function LoginForm() {
                       Forgot your password?
                     </Link>
                   </Box>
-                  <Button type="submit" fullWidth>
+                  <Button 
+                    type="submit" 
+                    fullWidth 
+                    loading={isLoading}
+                    disabled={isLoading}
+                  >
                     Sign in
                   </Button>
                 </Stack>
@@ -160,6 +236,7 @@ export default function LoginForm() {
           </Box>
         </Box>
       </Box>
+      
       <Box
         sx={{
           height: '100%',

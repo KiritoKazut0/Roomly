@@ -1,12 +1,12 @@
 
-export const name = (name: string) => {
+export const text = (text: string) => {
     const regex = /^[a-zA-Z\s]{5,}$/;
 
-    if (!name) {
+    if (!text) {
         return { isValid: false, message: "El campo no puede estar vacío" };
     }
 
-    if (!regex.test(name)) {
+    if (!regex.test(text)) {
         return { isValid: false, message: "El nombre debe contener solo letras y tener al menos 5 caracteres" };
     }
 
