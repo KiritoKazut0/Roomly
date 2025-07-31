@@ -4,7 +4,7 @@ export interface UserData {
         name: string;
         lastName: string;
         phone: string;
-        rol: 'Propietario' | 'Usuario';
+        rol: 'Propietario' | 'Estudiante';
         email: string;
         image: string | null;
         tipo_suscription: 'Premium' | 'Gratuita';

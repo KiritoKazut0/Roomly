@@ -1,5 +1,10 @@
 import React from 'react';
 import { Check, X, Star, Headphones, Shield, Zap, MessageCircle } from 'lucide-react';
+import { useAuthGuard } from '../../hooks/useAuthGuard';
+import Plans from "../../mocks/plans.json"
+import PlansFeature from "../../mocks/plansFeature.json"
+import { PaymentService } from "../../service/payment/paymentService";
+
 
 interface PlanFeature {
   name: string;
@@ -21,58 +26,39 @@ interface Plan {
 }
 
 const PlansPage: React.FC = () => {
-  const plans: Plan[] = [
-    {
-      id: 'basic',
-      name: 'Plan Básico',
-      price: '$0',
-      period: '/mes',
-      description: 'Con el Plan Básico puedes empezar a usar Roomly sin costo. Ideal para quienes desean explorar la plataforma, buscar cuartos o hacer su primera publicación.',
-      features: [
-        'Hasta 1 usuario',
-        'Soporte por email',
-        'Almacenamiento gratis',
-        'Contacto directo a través del sistema de mensajería',
-        'Actualizaciones estándar'
-      ],
-      buttonText: 'Comenzar con Básico',
-      buttonVariant: 'secondary'
-    },
-    {
-      id: 'premium',
-      name: 'Plan Premium',
-      price: '$120',
-      period: '/mes',
-      description: 'El Plan Premium está diseñado para quienes quieren destacar sus publicaciones y tener acceso a herramientas avanzadas. Ideal para arrendadores con varios cuartos o quienes buscan mayor visibilidad y control.',
-      popular: true,
-      features: [
-        'Publicaciones ilimitadas de cuartos',
-        'Soporte prioritario 24/7',
-        'Almacenamiento ilimitado',
-        'Mayor visibilidad en los resultados de búsqueda.',
-        'Integraciones ilimitadas',
-        'Actualizaciones prioritarias',
-        'Consultoría personalizada',
-        'Soporte prioritario',
-        'Navegación sin anuncios'
-      ],
-      buttonText: 'Comenzar con Premium',
-      buttonVariant: 'primary'
-    }
-  ];
+ const plans = Plans as Plan[]
+  const detailedFeatures: PlanFeature[]  = PlansFeature;
+  const {userData} = useAuthGuard()
+  
+   if (!userData) {
+    return <div>Cargando...</div>;
+  }
+  const {tipo_suscription} = userData
 
-  const detailedFeatures: PlanFeature[] = [
-    { name: 'Número de usuarios', basic: '1 usuarios', premium: 'Ilimitados' },
-    { name: 'Almacenamiento', basic: 'gratis', premium: 'Ilimitado' },
-    { name: 'Soporte técnico', basic: 'Email (48h)', premium: '24/7 Prioritario' },
-    { name: 'API personalizada', basic: false, premium: true },
-    { name: 'Consultoría incluida', basic: false, premium: true },
-    { name: 'Gestión de permisos', basic: 'Simple', premium: 'Avanzada' },
-    { name: 'Backup automático', basic: 'Semanal', premium: 'Diario' },
-    { name: 'Personalización UI', basic: false, premium: true },
-    { name: 'Capacitación del equipo', basic: false, premium: 'Incluida' },
-    { name: 'SLA garantizado', basic: false, premium: '99.9%' }
-  ];
+  const getButtonState = (planId: string) => {
+    const userPlan = tipo_suscription === 'Premium' ? 'premium' : 'basic';
+    const isCurrentPlan = planId === userPlan;
+    
+    return {
+      isDisabled: isCurrentPlan,
+      buttonText: isCurrentPlan ? 'Plan Actual' : (planId === 'basic' ? 'Cambiar a Básico' : 'Actualizar a Premium')
+    };
+  };
+
+
+    if (!userData){
+      return <div> No se puede acceder a la pagina, inicia sesion</div>
+    }
+  
+  
+  
+    const handlerPayment =  async () => {
+      const {id} = userData;
+      const {url} = await PaymentService(id)
+      window.location.href = url
+      
+    }
+
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -87,64 +73,68 @@ const PlansPage: React.FC = () => {
       <div className="max-w-6xl mx-auto px-4 py-12">
         {/* Plans Grid */}
         <div className="grid lg:grid-cols-2 gap-8 mb-16">
-          {plans.map((plan, index) => (
-            <div
-              key={plan.id}
-              className={`bg-white rounded-lg shadow-lg border-2 transition-all hover:shadow-xl ${
-                plan.popular 
-                  ? 'border-blue-500 relative' 
-                  : 'border-gray-200 hover:border-blue-300'
-              }`}
-            >
-              {plan.popular && (
-                <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                  <div className="bg-blue-600 text-white px-4 py-1 rounded-full text-sm font-medium flex items-center">
-                    <Star className="w-4 h-4 mr-1" />
-                    Más Popular
-                  </div>
-                </div>
-              )}
-              
-              <div className="p-8">
-                <div className="text-center mb-8">
-                  <h3 className="text-2xl font-medium text-gray-900 mb-2">{plan.name}</h3>
-                  <p className="text-gray-600 mb-6">{plan.description}</p>
-                  
-                  <div className="flex items-baseline justify-center">
-                    <span className="text-4xl font-light text-gray-900">{plan.price}</span>
-                    <span className="text-gray-600 ml-1">{plan.period}</span>
-                  </div>
-                </div>
-
-                <div className="space-y-4 mb-8">
-                  {plan.features.map((feature, featureIndex) => (
-                    <div key={featureIndex} className="flex items-center">
-                      <Check className="w-5 h-5 text-green-500 mr-3 flex-shrink-0" />
-                      <span className="text-gray-700">{feature}</span>
+          {plans.map((plan) => {
+            const buttonState = getButtonState(plan.id);
+            
+            return (
+              <div
+                key={plan.id}
+                className={`bg-white rounded-lg shadow-lg border-2 transition-all hover:shadow-xl ${
+                  plan.popular 
+                    ? 'border-blue-500 relative' 
+                    : 'border-gray-200 hover:border-blue-300'
+                }`}
+              >
+                {plan.popular && (
+                  <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
+                    <div className="bg-blue-600 text-white px-4 py-1 rounded-full text-sm font-medium flex items-center">
+                      <Star className="w-4 h-4 mr-1" />
+                      Más Popular
                     </div>
-                  ))}
-                </div>
-
-                <button
-                  className={`w-full py-3 px-6 rounded-lg font-medium transition-colors ${
-                    plan.buttonVariant === 'primary'
-                      ? 'bg-blue-600 text-white hover:bg-blue-700'
-                      : 'border-2 border-blue-600 text-blue-600 hover:bg-blue-50'
-                  }`}
-                >
-                  {plan.buttonText}
-                </button>
-
-                {plan.id === 'premium' && (
-                  <div className="mt-4 text-center">
-                    <button className="text-blue-600 text-sm font-medium hover:text-blue-700 transition-colors">
-                      Solicitar demo gratuita →
-                    </button>
                   </div>
                 )}
+                
+                <div className="p-8">
+                  <div className="text-center mb-8">
+                    <h3 className="text-2xl font-medium text-gray-900 mb-2">{plan.name}</h3>
+                    <p className="text-gray-600 mb-6">{plan.description}</p>
+                    
+                    <div className="flex items-baseline justify-center">
+                      <span className="text-4xl font-light text-gray-900">{plan.price}</span>
+                      <span className="text-gray-600 ml-1">{plan.period}</span>
+                    </div>
+                  </div>
+
+                  <div className="space-y-4 mb-8">
+                    {plan.features.map((feature, featureIndex) => (
+                      <div key={featureIndex} className="flex items-center">
+                        <Check className="w-5 h-5 text-green-500 mr-3 flex-shrink-0" />
+                        <span className="text-gray-700">{feature}</span>
+                      </div>
+                    ))}
+                  </div>
+
+                  <button
+                    disabled={buttonState.isDisabled}
+                    onClick={
+                      handlerPayment
+                    }
+                    className={`w-full py-3 px-6 rounded-lg font-medium transition-colors ${
+                      buttonState.isDisabled
+                        ? 'bg-gray-300 text-gray-500 cursor-not-allowed'
+                        : plan.buttonVariant === 'primary'
+                        ? 'bg-blue-600 text-white hover:bg-blue-700'
+                        : 'border-2 border-blue-600 text-blue-600 hover:bg-blue-50'
+                    }`}
+                  >
+                    {buttonState.buttonText}
+                  </button>
+
+                 
+                </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
 
         {/* Detailed Comparison */}

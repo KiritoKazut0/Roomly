@@ -14,7 +14,7 @@ import {
   Home, 
   Search
 } from '@mui/icons-material';
-import robotImage from '../../img/nps-removebg-preview.png';
+import robotImage from '../../assets/nps-removebg-preview.png';
 
 interface FallingHouseProps {
   delay: number;

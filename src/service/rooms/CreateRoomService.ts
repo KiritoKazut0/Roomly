@@ -2,7 +2,7 @@ import axios from "axios";
 import { BASE_URL } from "../../core/BaseUrl";
 import type { CreateRoomDto } from "../../types/dtos/rooms/CreateRoom.dto";
 
-export const createRoom = async (
+export const CreateRoom = async (
     { id_user,
         city,
         description,

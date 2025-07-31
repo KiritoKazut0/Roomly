@@ -1,0 +1,137 @@
+[
+  {
+    "user": {
+      "id": "user123",
+      "name": "Ana García",
+      "image": "https://tse1.explicit.bing.net/th/id/OIP.ajfwE8y3wKbKkOTLgPwxWwHaE8?rs=1&pid=ImgDetMain&o=7&rm=3"
+    },
+    "comment": "El cuarto era espacioso y muy limpio. La cama era increíblemente cómoda y el aire acondicionado funcionaba a la perfección. ¡Una estancia de 10!",
+    "qualification": 5
+  },
+  {
+    "user": {
+      "id": "user124",
+      "name": "Carlos Ruiz",
+      "image" :"https://th.bing.com/th/id/OIP.0cCGP06FFN7nD2t7LE2pRAHaHp?o=7rm=3&rs=1&pid=ImgDetMain&o=7&rm=3"
+    },
+    "comment": "Buena ubicación, pero el baño necesitaba una reforma. Había algo de ruido por la noche. Aceptable para una noche, pero no para estancias largas.",
+    "qualification": 3
+  },
+  {
+    "user": {
+      "id": "user125",
+      "name": "María López",
+      "image": "https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=1200"
+    },
+    "comment": "Me encantó la decoración del cuarto, muy moderna y acogedora. El servicio fue excelente y el desayuno delicioso. ¡Volveré sin duda!",
+    "qualification": 5
+  },
+  {
+    "user": {
+      "id": "user126",
+      "name": "Juan Pérez",
+      "image":"https://th.bing.com/th/id/R.f73da8b51aeb86da8d9abda7cbe162bf?rik=oPmOB229MRPUFw&pid=ImgRaw&r=0"
+    },
+    "comment": "El cuarto era un poco pequeño para mi gusto y la conexión a internet era intermitente. Lo positivo es que estaba muy cerca de los lugares turísticos.",
+    "qualification": 3
+  },
+  {
+    "user": {
+      "id": "user127",
+      "name": "Laura Martínez",
+      "image": "https://tse2.mm.bing.net/th/id/OIP.0FIoRyVLGhvHReM0sXcbuQHaE7?w=626&h=417&rs=1&pid=ImgDetMain&o=7&rm=3"
+    },
+    "comment": "Impecable. Todo en perfecto estado. La atención del personal fue excepcional, siempre dispuestos a ayudar. La vista desde la ventana era preciosa.",
+    "qualification": 5
+  },
+  {
+    "user": {
+      "id": "user128",
+      "name": "Pedro Sánchez",
+      "image":"https://thumbs.dreamstime.com/b/retrato-de-un-hombre-atractivo-39828387.jpg"
+    },
+    "comment": "El colchón era un poco duro y las almohadas no eran las más cómodas. Por lo demás, el cuarto estaba limpio y cumplía con lo esperado.",
+    "qualification": 3
+  },
+  {
+    "user": {
+      "id": "user129",
+      "name": "Sofía Giménez",
+      "image": "hhttps://th.bing.com/th/id/R.6db076ba1e4078e3e20d6463b29b072d?rik=EPWU4cEYyDavmg&riu=http%3a%2f%2fcdn3.upsocl.com%2fwp-content%2fuploads%2f2014%2f03%2f268.jpg&ehk=yfLWWyMuDKwwoodDORRXdGBs79s04AL3oqoOUz3OPYc%3d&risl=&pid=ImgRaw&r=0"
+    },
+    "comment": "El cuarto tenía un olor extraño al entrar y la limpieza no era la mejor. El precio es un poco alto para lo que ofrecen. No lo recomendaría.",
+    "qualification": 2
+  },
+  {
+    "user": {
+      "id": "user130",
+      "name": "Diego Castro",
+      "image":"https://static1.bigstockphoto.com/1/7/2/large1500/27169880.jpg"
+    },
+    "comment": "Excelente cuarto, muy tranquilo y silencioso. Pude descansar perfectamente. La ducha tenía buena presión y el agua caliente sin problemas.",
+    "qualification": 4
+  },
+  {
+    "user": {
+      "id": "user131",
+      "name": "Elena Vidal",
+      "image": "https://th.bing.com/th/id/R.cc256c1b4bef02f25b95b61cc08abc82?rik=pjCdmtaS4UJVHw&riu=http%3a%2f%2f2.bp.blogspot.com%2f-GwID6R2CyTw%2fTkFmEjWPAsI%2fAAAAAAAABJQ%2ftlnfpZD8peg%2fs1600%2fshutterstock_2132216.jpg&ehk=VxXF0E3tPLkWtysO328VbKcQZnWfWAb6fw7%2bDJ3LuMQ%3d&risl=&pid=ImgRaw&r=0"
+    },
+    "comment": "La calefacción no funcionaba correctamente y pasé frío por la noche. Un punto a mejorar. Por lo demás, el espacio era adecuado.",
+    "qualification": 2
+  },
+  {
+    "user": {
+      "id": "user132",
+      "name": "Pablo Navarro",
+      "image":"https://tse2.mm.bing.net/th/id/OIP.CfzDhcRox7htLljtBmfyLwAAAA?w=417&h=626&rs=1&pid=ImgDetMain&o=7&rm=3"
+    },
+    "comment": "El cuarto es tal cual se ve en las fotos. Muy luminoso y con todas las comodidades. Me gustó mucho el detalle de la cafetera en la habitación.",
+    "qualification": 4
+  },
+  {
+    "user": {
+      "id": "user133",
+      "name": "Andrea Ríos",
+      "image": "https://thumbs.dreamstime.com/b/two-smiling-sisters-sitting-ground-autumn-park-two-smiling-sisters-sitting-ground-autumn-park-mid-shot-198766228.jpg"
+    },
+    "comment": "Demasiado ruido del exterior, no pude dormir bien. Las ventanas no aislaban lo suficiente. Es una lástima porque el cuarto era bonito.",
+    "qualification": 2
+  },
+  {
+    "user": {
+      "id": "user134",
+      "name": "Fernando Gil",
+      "image":"https://tse1.mm.bing.net/th/id/OIP.ZhaQgJS1bb1kTJDQdcBTOQHaLH?rs=1&pid=ImgDetMain&o=7&rm=3"
+    },
+    "comment": "El cuarto era muy amplio y la televisión tenía muchas opciones de canales. El personal de limpieza hizo un gran trabajo todos los días.",
+    "qualification": 4
+  },
+  {
+    "user": {
+      "id": "user135",
+      "name": "Isabel Molina",
+      "image": "https://images-pw.pixieset.com/elementfield/973781511/brenner_family-3-32f87a36.jpg"
+    },
+    "comment": "No había suficientes enchufes en la habitación, lo cual fue un inconveniente. La ubicación era excelente y el personal muy amable.",
+    "qualification": 3
+  },
+  {
+    "user": {
+      "id": "user136",
+      "name": "Sergio Torres",
+      "image":"https://static1.bigstockphoto.com/1/7/2/large1500/27169880.jpg"
+    },
+    "comment": "El cuarto era exactamente lo que buscaba: limpio, cómodo y funcional. Ideal para un viaje de negocios. El wifi era rápido.",
+    "qualification": 5
+  },
+  {
+    "user": {
+      "id": "user137",
+      "name": "Daniela Vargas",
+      "image": "https://tse4.mm.bing.net/th/id/OIP.-0ZW32SPLt_hrBWoB-_55gHaK9?rs=1&pid=ImgDetMain&o=7&rm=3"
+    },
+    "comment": "Las toallas olían a humedad y el control remoto del televisor no funcionaba bien. Detalles que restan puntos a una estancia que podría haber sido mejor.",
+    "qualification": 2
+  }
+]

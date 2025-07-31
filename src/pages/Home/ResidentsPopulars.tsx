@@ -1,7 +1,7 @@
 import { Box, Button, Typography } from "@mui/joy";
 import CardHome from "../../components/ui/card/Card";
 import { Container } from "@mui/material";
-import HomsPopulars from "../../mocks/homes.json";
+import HomsPopulars from "../../mocks/homsPopulars.json";
 import { useNavigate } from "react-router-dom";
 
 export default function ResidentsPopulars() {
@@ -57,7 +57,8 @@ export default function ResidentsPopulars() {
                 })}
             </Container>
 
-            <Button variant="outlined" size="md">Ver más</Button>
+            <Button variant="outlined" size="md" onClick={() => navigate('/residents')}>Ver más</Button>
+            <br /><br /><br />
         </Box>
     );
 }

@@ -13,6 +13,9 @@ import SupportPage from "../pages/Support/Support"
 import ContactPage from "../pages/Contact/Contact"
 import AboutPage from "../pages/AboutMe/AboutMe"
 import PlansPage from "../pages/Plans/Plans"
+import NotFoundPage from "../pages/NotFound/NotFound"
+import StartPublish from "../pages/StartPublish/StartPublish"
+import AdminDashboard from "../pages/Property/property"
 
 export default function RouterProvider() {
     // const { isAuthenticated } = useContext(AuthGuardContext)
@@ -20,6 +23,7 @@ export default function RouterProvider() {
     return (
         <BrowserRouter>
             <Routes>
+                <Route path="*" element={<NotFoundPage />} />
                 <Route path="/" element={<Home />} />
                 <Route path="/login" element={<LoginForm />} />
                 <Route path="/signIn" element={<RegisterForm />} />
@@ -31,6 +35,8 @@ export default function RouterProvider() {
                 <Route path="/contact" element={<ContactPage />} />
                 <Route path="/about" element={<AboutPage />} />
                 <Route path="/plans" element={<PlansPage />} />
+                <Route path="/start-publish" element={<StartPublish />} />
+                <Route path="/admin" element={<AdminDashboard />} />
             </Routes>
         </BrowserRouter>
     );

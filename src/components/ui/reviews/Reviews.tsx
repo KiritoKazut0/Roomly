@@ -3,12 +3,15 @@ import type { ReviewDto } from "../../../types/dtos/reviews/Reviews.dto";
 import {  MessageCircle } from 'lucide-react';
 
 
+
 interface CommentsUserProps {
     userComments: ReviewDto[]
      renderStars: (rating: number) => JSX.Element[]
 }
 
 export default function ReviewsList({userComments, renderStars}: CommentsUserProps) {
+  
+
     return (
         <>
             {/* Reviews List */}

@@ -22,18 +22,6 @@ export default function NavDetailsRoom({ciudad, onBack}: DetailsNavRoomProps) {
                             Cuarto en {ciudad}
                         </h1>
                     </div>
-{/* 
-                    <div className="flex items-center space-x-2">
-                        <button className="p-2 hover:bg-gray-100 rounded-full transition-colors">
-                            <Share className="w-4 h-4 text-gray-600" />
-                        </button>
-                        <button
-                            onClick={() => setIsFavorite(!isFavorite)}
-                            className="p-2 hover:bg-gray-100 rounded-full transition-colors"
-                        >
-                            <Heart className={`w-4 h-4 ${isFavorite ? 'text-red-500 fill-current' : 'text-gray-600'}`} />
-                        </button>
-                    </div> */}
                 </div>
             </div>
         </header>

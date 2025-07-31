@@ -1,9 +1,14 @@
 import { useState, useEffect } from "react";
 import { CheckCircle, ArrowRight, Sparkles, Star } from "lucide-react";
+import { useNavigate } from "react-router-dom";
+
 
 export default function PaymentSuccess() {
+  const navigate = useNavigate()
   const [isVisible, setIsVisible] = useState(false);
   const [showConfetti, setShowConfetti] = useState(false);
+
+
 
   useEffect(() => {
     // Animación de entrada
@@ -112,7 +117,9 @@ export default function PaymentSuccess() {
 
           {/* Botón de acción */}
           <div className="mb-6">
-            <button className="w-full bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 text-white font-semibold py-3 px-6 rounded-xl transform transition-all duration-200 hover:scale-105 hover:shadow-lg flex items-center justify-center gap-2 group">
+            <button 
+            onClick={() => navigate('/residents')}
+            className="w-full bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 text-white font-semibold py-3 px-6 rounded-xl transform transition-all duration-200 hover:scale-105 hover:shadow-lg flex items-center justify-center gap-2 group">
               Continuar
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </button>

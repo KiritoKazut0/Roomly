@@ -1,115 +1,69 @@
+import React from 'react';
+import { Users, Send, Shield, FileText } from 'lucide-react';
 
+interface Beneficio {
+  id: number;
+  icono: React.ReactNode;
+  titulo: string;
+  descripcion: string;
+}
 
-import { Box, Typography, useTheme } from '@mui/material';
-import {
-  PeopleAlt as PeopleIcon,
-  Speed as SpeedIcon,
-  Payment as PaymentIcon,
-  Description as DescriptionIcon
-} from '@mui/icons-material';
-
-const BeneficiosArrendadores = () => {
-  const theme = useTheme();
-
-  const beneficios = [
+export default function BeneficiosArrendadores() {
+  const beneficios: Beneficio[] = [
     {
-      icon: <PeopleIcon color="primary" />,
-      title: "Llega a miles de interesados",
-      description: "Tu anuncio será visto por estudiantes y profesionales"
+      id: 1,
+      icono: <Users className="w-6 h-6" />,
+      titulo: "Llega a miles de interesados",
+      descripcion: "Tu anuncio será visto por estudiantes y profesionales buscando espacio"
     },
     {
-      icon: <SpeedIcon color="primary" />,
-      title: "Publicación fácil y rápida",
-      description: "Publica en minutos con nuestro formulario intuitivo"
+      id: 2,
+      icono: <Send className="w-6 h-6" />,
+      titulo: "Publicación fácil y rápida",
+      descripcion: "Publica tu espacio en minutos con nuestro formulario intuitivo"
     },
     {
-      icon: <PaymentIcon color="primary" />,
-      title: "Gestión segura de pagos",
-      description: "Procesamos los pagos de forma transparente"
+      id: 3,
+      icono: <Shield className="w-6 h-6" />,
+      titulo: "Gestión segura de pagos",
+      descripcion: "Procesamos los pagos de forma segura y transparente"
     },
     {
-      icon: <DescriptionIcon color="primary" />,
-      title: "Sin contratos complicados",
-      description: "Proceso simple sin papeleo innecesario"
+      id: 4,
+      icono: <FileText className="w-6 h-6" />,
+      titulo: "Sin contratos complicados",
+      descripcion: "Proceso simple sin papeleo innecesario o trámites complejos"
     }
   ];
 
   return (
-    <Box sx={{
-      py: 4,
-      px: 3,
-      display: 'flex',
-      flexDirection: 'column',
-      alignItems: 'center',
-      backgroundColor: theme.palette.background.paper,
-      maxWidth: '900px',
-      margin: '0 auto'
-    }}>
-      <Typography variant="h4" component="h2" sx={{
-        textAlign: 'center',
-        mb: 4,
-        fontWeight: 600,
-        color: theme.palette.text.primary,
-        width: '100%'
-      }}>
-        Beneficios para arrendadores
-      </Typography>
-
-      <Box sx={{
-        display: 'flex',
-        flexWrap: 'wrap',
-        justifyContent: 'center',
-        gap: 3,
-        width: '100%'
-      }}>
-        {beneficios.map((beneficio, index) => (
-          <Box 
-            key={index}
-            sx={{
-              display: 'flex',
-              flexDirection: 'column',
-              alignItems: 'center',
-              textAlign: 'center',
-              p: 2,
-              width: '100%',
-              maxWidth: '220px',
-              minHeight: '200px',
-              boxSizing: 'border-box',
-              borderRadius: '8px',
-              backgroundColor: theme.palette.background.default,
-              flex: '1 1 200px'
-            }}
-          >
-            <Box sx={{ 
-              height: '48px',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              mb: 2
-            }}>
-              {beneficio.icon}
-            </Box>
-            <Typography variant="h6" component="h3" sx={{
-              mb: 2,
-              fontWeight: 500,
-              color: theme.palette.text.primary,
-              minHeight: '60px',
-              display: 'flex',
-              alignItems: 'center'
-            }}>
-              {beneficio.title}
-            </Typography>
-            <Typography variant="body1" sx={{
-              color: theme.palette.text.secondary,
-              fontSize: '0.9rem'
-            }}>
-              {beneficio.description}
-            </Typography>
-          </Box>
-        ))}
-      </Box>
-    </Box>
+    <section className="py-16 px-4 bg-gray-50">
+      <div className="max-w-6xl mx-auto">
+        <h2 className="text-3xl font-bold text-center text-gray-900 mb-12">
+          Beneficios para arrendadores
+        </h2>
+        
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {beneficios.map((beneficio) => (
+            <div 
+              key={beneficio.id}
+              className="text-center p-6"
+            >
+              <div className="inline-flex items-center justify-center w-16 h-16 bg-emerald-500 text-white rounded-full mb-6">
+                {beneficio.icono}
+              </div>
+              
+              <h3 className="text-lg font-semibold text-gray-900 mb-3">
+                {beneficio.titulo}
+              </h3>
+              
+              <p className="text-gray-600 text-sm leading-relaxed">
+                {beneficio.descripcion}
+              </p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
   );
-};
-
-export default BeneficiosArrendadores;
+}

@@ -1,0 +1,39 @@
+[
+  {
+    "id": "basic",
+    "name": "Plan Básico",
+    "price": "$0",
+    "period": "/mes",
+    "description": "Con el Plan Básico puedes empezar a usar Roomly sin costo. Ideal para quienes desean explorar la plataforma, buscar cuartos o hacer su primera publicación.",
+    "features": [
+      "Hasta 1 usuario",
+      "Soporte por email",
+      "Almacenamiento gratis",
+      "Contacto directo a través del sistema de mensajería",
+      "Actualizaciones estándar"
+    ],
+    "buttonText": "Comenzar con Básico",
+    "buttonVariant": "secondary"
+  },
+  {
+    "id": "premium",
+    "name": "Plan Premium",
+    "price": "$120",
+    "period": "/mes",
+    "description": "El Plan Premium está diseñado para quienes quieren destacar sus publicaciones y tener acceso a herramientas avanzadas. Ideal para arrendadores con varios cuartos o quienes buscan mayor visibilidad y control.",
+    "popular": true,
+    "features": [
+      "Publicaciones ilimitadas de cuartos",
+      "Soporte prioritario 24/7",
+      "Almacenamiento ilimitado",
+      "Mayor visibilidad en los resultados de búsqueda.",
+      "Integraciones ilimitadas",
+      "Actualizaciones prioritarias",
+      "Consultoría personalizada",
+      "Soporte prioritario",
+      "Navegación sin anuncios"
+    ],
+    "buttonText": "Comenzar con Premium",
+    "buttonVariant": "primary"
+  }
+]

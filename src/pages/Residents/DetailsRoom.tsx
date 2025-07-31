@@ -9,6 +9,7 @@ import ReviewForm from '../Forms/ReviewForm';
 import type { JSX } from '@emotion/react/jsx-runtime';
 import ReviewsList from '../../components/ui/reviews/Reviews';
 import rentsMocks from "../../mocks/homes.json"; 
+import reviewsData from "../../mocks/reviews.json"
 
 interface RoomDetailsPageProps {}
 
@@ -16,6 +17,8 @@ export const RoomDetailsPage: React.FC<RoomDetailsPageProps> = () => {
     
     const { roomId } = useParams<{ roomId: string }>();
     const navigate = useNavigate();
+    const mocks: ReviewDto[] = reviewsData as ReviewDto[]
+
     
     const [room, setRoom] = useState<RoomDto | null>(null);
     const [reviews, setReviews] = useState<ReviewDto[]>([]);
@@ -270,7 +273,7 @@ export const RoomDetailsPage: React.FC<RoomDetailsPageProps> = () => {
                         />
 
                         <ReviewsList 
-                            userComments={userComments}
+                            userComments={mocks}
                             renderStars={renderStars}
                         />
                     </div>

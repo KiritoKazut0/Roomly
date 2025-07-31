@@ -2,7 +2,7 @@ import React from 'react';
 import { Box, Typography, Link } from '@mui/material';
 import { Facebook, Twitter, Instagram, LinkedIn } from '@mui/icons-material';
 
-const Footer = () => {
+const FooterSection = () => {
   const sections = [
     {
       title: "Roomly",
@@ -171,4 +171,4 @@ const Footer = () => {
   );
 };
 
-export default Footer;
+export default FooterSection;

@@ -1,8 +1,8 @@
 import Welcome from './Welcome';
 import Section2 from './Section2';
 import ResidentsPopulars from './ResidentsPopulars';
-import Support from './Support';
 import { Box } from '@mui/joy';
+import FooterSection from "../../components/layout/footer/Footer.tsx"
 
 export default function Home() {
     return (
@@ -10,7 +10,7 @@ export default function Home() {
         <Welcome/>
          <Section2 />
         <ResidentsPopulars />
-        <Support/>
+        <FooterSection/>
        </Box>
 
     );
