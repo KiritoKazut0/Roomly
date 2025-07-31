@@ -1,6 +1,7 @@
 import { Box, Typography, Button, Paper, useTheme, useMediaQuery } from '@mui/material';
 import { HomeWork as HomeWorkIcon } from '@mui/icons-material';
 
+
 const RentSpaceBanner = () => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
@@ -12,8 +13,8 @@ const RentSpaceBanner = () => {
         ? 'linear-gradient(135deg, #2c387e 0%, #1e2a78 100%)' 
         : 'linear-gradient(135deg, #eaf1f9ff 0%, #bed6eeff 100%)',
       borderRadius: 2,
-      p: 4,
-      my: 4,
+      p: 15,
+
       border: theme.palette.mode === 'dark' 
         ? '1px solid rgba(255, 255, 255, 0.12)' 
         : '1px solid rgba(0, 0, 0, 0.12)',

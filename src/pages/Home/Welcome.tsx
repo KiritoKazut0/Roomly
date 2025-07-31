@@ -1,8 +1,11 @@
 import { Box, Button, Container, Typography, } from '@mui/joy';
 import WelcomeImage from "../../assets/welcome.png"
 import PublicNav from "../../components/layout/Nav/PublicNav";
+import { useNavigate } from 'react-router-dom';
 
 export default function Welcome() {
+    const navigate = useNavigate()
+    
     return (
         <Box>
             <PublicNav />
@@ -57,7 +60,11 @@ export default function Welcome() {
                             flexWrap: 'wrap'
                         }}>
 
-                            <Button variant='solid' color='neutral'>Comenzar</Button>
+                            <Button 
+                            variant='solid'
+                             color='neutral'
+                             onClick={() => navigate("/start-publish")}
+                             >Comenzar</Button>
                         </Box>
                     </Box>
                     <Box sx={{

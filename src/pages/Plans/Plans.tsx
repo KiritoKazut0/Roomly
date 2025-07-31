@@ -3,6 +3,8 @@ import { Check, X, Star, Headphones, Shield, Zap, MessageCircle } from 'lucide-r
 import { useAuthGuard } from '../../hooks/useAuthGuard';
 import Plans from "../../mocks/plans.json"
 import PlansFeature from "../../mocks/plansFeature.json"
+import { PaymentService } from "../../service/payment/paymentService";
+
 
 interface PlanFeature {
   name: string;
@@ -42,6 +44,21 @@ const PlansPage: React.FC = () => {
       buttonText: isCurrentPlan ? 'Plan Actual' : (planId === 'basic' ? 'Cambiar a Básico' : 'Actualizar a Premium')
     };
   };
+
+
+    if (!userData){
+      return <div> No se puede acceder a la pagina, inicia sesion</div>
+    }
+  
+  
+  
+    const handlerPayment =  async () => {
+      const {id} = userData;
+      const {url} = await PaymentService(id)
+      window.location.href = url
+      
+    }
+
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -99,6 +116,9 @@ const PlansPage: React.FC = () => {
 
                   <button
                     disabled={buttonState.isDisabled}
+                    onClick={
+                      handlerPayment
+                    }
                     className={`w-full py-3 px-6 rounded-lg font-medium transition-colors ${
                       buttonState.isDisabled
                         ? 'bg-gray-300 text-gray-500 cursor-not-allowed'

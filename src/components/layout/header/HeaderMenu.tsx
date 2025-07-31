@@ -101,6 +101,7 @@ const Navigation: React.FC = () => {
 
           <button
             className="flex items-center space-x-2 px-3 py-2 text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 rounded-lg transition-colors duration-200"
+            onClick={() => navigate('/start-publish')}
           >
             <Plus className="w-4 h-4" />
             <span>Agregar cuarto</span>

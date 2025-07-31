@@ -1,16 +1,16 @@
 import { Box, Button, Typography } from "@mui/joy";
 import CardHome from "../../components/ui/card/Card";
 import { Container } from "@mui/material";
-import HomsPopulars from "../../mocks/homes.json";
+import HomsPopulars from "../../mocks/homsPopulars.json";
 import { useNavigate } from "react-router-dom";
 
 export default function ResidentsPopulars() {
 
-    const navigate = useNavigate();
-
-    const handleRoomClick = (roomId: string) => {
-        navigate(`residents/room/${roomId}`);
-    };
+        const navigate = useNavigate();
+    
+        const handleRoomClick = (roomId: string) => {
+            navigate(`residents/room/${roomId}`);
+        };
 
     return (
         <Box textAlign='center'>
@@ -51,18 +51,13 @@ export default function ResidentsPopulars() {
                             estado={home.estado}
                             precio={precio}
                             imagen_main={imagen_main}
-                            onClick={() => handleRoomClick(home.id)}
+                          onClick={() => handleRoomClick(home.id)}
                         />
                     );
                 })}
             </Container>
-            
 
-            <Button
-                variant="outlined"
-                size="md"
-                onClick={() => navigate('/residents')}
-            >Ver más</Button>
+            <Button variant="outlined" size="md" onClick={() => navigate('/residents')}>Ver más</Button>
             <br /><br /><br />
         </Box>
     );

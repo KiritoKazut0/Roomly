@@ -28,6 +28,11 @@ export default function ProfileInterface() {
     }
   };
 
+
+const handlerValidate = (): boolean => user.rol === "Estudiante";
+
+
+
   return (
     <div className="min-h-screen bg-gray-50">
       <Navigation />
@@ -69,6 +74,7 @@ export default function ProfileInterface() {
             </button>
             <button
               onClick={() => navigate('/plans')}
+              disabled = {handlerValidate()}
               className="flex items-center gap-2 px-6 py-2 bg-gray-200 hover:bg-gray-300 text-gray-700 rounded-lg transition-colors duration-200 text-sm font-medium border border-gray-300 hover:border-gray-400"
             >
               <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
