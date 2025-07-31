@@ -1,0 +1,18 @@
+[
+    {
+      "question": "¿Cómo puedo restablecer mi contraseña?",
+      "answer": "Puedes restablecer tu contraseña haciendo clic en 'Olvidé mi contraseña' en la página de inicio de sesión. Te enviaremos un enlace por correo electrónico."
+    },
+    {
+      "question": "¿Cómo cambio mi plan de suscripción?",
+      "answer": "Ve a Configuración > Facturación en tu cuenta. Allí podrás ver todos los planes disponibles y cambiar tu suscripción actual."
+    },
+    {
+      "question": "¿Dónde puedo ver mi historial de facturación?",
+      "answer": "Tu historial de facturación está disponible en la sección Configuración > Facturación > Historial de tu cuenta."
+    },
+    {
+      "question": "¿Cómo contacto al soporte técnico?",
+      "answer": "Puedes contactarnos a través del chat en vivo, correo electrónico o teléfono. Todas las opciones están disponibles en esta página."
+    }
+  ]
