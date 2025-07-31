@@ -1,0 +1,12 @@
+[
+  { "name": "Número de usuarios", "basic": "1 usuarios", "premium": "Ilimitados" },
+  { "name": "Almacenamiento", "basic": "gratis", "premium": "Ilimitado" },
+  { "name": "Soporte técnico", "basic": "Email (48h)", "premium": "24/7 Prioritario" },
+  { "name": "API personalizada", "basic": false, "premium": true },
+  { "name": "Consultoría incluida", "basic": false, "premium": true },
+  { "name": "Gestión de permisos", "basic": "Simple", "premium": "Avanzada" },
+  { "name": "Backup automático", "basic": "Semanal", "premium": "Diario" },
+  { "name": "Personalización UI", "basic": false, "premium": true },
+  { "name": "Capacitación del equipo", "basic": false, "premium": "Incluida" },
+  { "name": "SLA garantizado", "basic": false, "premium": "99.9%" }
+]

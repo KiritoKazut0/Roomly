@@ -14,12 +14,14 @@ import ContactPage from "../pages/Contact/Contact"
 import AboutPage from "../pages/AboutMe/AboutMe"
 import PlansPage from "../pages/Plans/Plans"
 
+
 export default function RouterProvider() {
     // const { isAuthenticated } = useContext(AuthGuardContext)
 
     return (
         <BrowserRouter>
             <Routes>
+                {/* <Route path="*" element={<NotFound />} /> */}
                 <Route path="/" element={<Home />} />
                 <Route path="/login" element={<LoginForm />} />
                 <Route path="/signIn" element={<RegisterForm />} />
@@ -31,6 +33,7 @@ export default function RouterProvider() {
                 <Route path="/contact" element={<ContactPage />} />
                 <Route path="/about" element={<AboutPage />} />
                 <Route path="/plans" element={<PlansPage />} />
+
             </Routes>
         </BrowserRouter>
     );

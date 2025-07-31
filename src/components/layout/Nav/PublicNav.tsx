@@ -12,7 +12,13 @@ import MenuItem from '@mui/material/MenuItem';
 import BedIcon from '@mui/icons-material/Bed';
 import { useNavigate } from 'react-router-dom';
 
-const pages = ['Home', 'Service', 'Agents', 'Contact'];
+const pages = [
+  { label: 'Home', path: '/' },
+  { label: 'Service', path: '/service' },
+  { label: 'Agents', path: '/agents' },
+  { label: 'Contact', path: '/contact' }
+];
+
 
 export default function PublicNav() {
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
@@ -24,11 +30,6 @@ export default function PublicNav() {
 
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
-  };
-
-
-  const handleSingnup = () => {
-    navigate(`/signIn`);
   };
 
 
@@ -87,18 +88,25 @@ export default function PublicNav() {
               onClose={handleCloseNavMenu}
               sx={{ display: { xs: 'block', md: 'none' } }}
             >
-              {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography sx={{ textAlign: 'center' }}>{page}</Typography>
+              {pages.map(({ label, path }) => (
+                <MenuItem
+                  key={label}
+                  onClick={() => {
+                    navigate(path);
+                    handleCloseNavMenu();
+                  }}
+                >
+                  <Typography sx={{ textAlign: 'center' }}>{label}</Typography>
                 </MenuItem>
               ))}
+
             </Menu>
           </Box>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' }, gap: 4 }}>
-            {pages.map((page) => (
+            {pages.map(({ label, path }) => (
               <Button
-                key={page}
-                onClick={handleCloseNavMenu}
+                key={label}
+                onClick={() => navigate(path)}
                 sx={{
                   my: 3,
                   color: '#2c3e50',
@@ -108,9 +116,10 @@ export default function PublicNav() {
                   fontSize: '1rem'
                 }}
               >
-                {page}
+                {label}
               </Button>
             ))}
+
           </Box>
           <Box sx={{ flexGrow: 0 }}>
             <Button
@@ -120,7 +129,7 @@ export default function PublicNav() {
                 background: "black",
                 textTransform: 'none',
               }}
-              onClick={() => handleSingnup()}
+              onClick={() => navigate(`/signIn`)}
             >
               Sign up
             </Button>

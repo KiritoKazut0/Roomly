@@ -1,30 +1,21 @@
 import { useState } from "react";
-import { Edit2, LogOut, User, Mail, Phone, MapPin, Crown, Shield, RefreshCw } from "lucide-react";
+import { Edit2, LogOut, User, Mail, Phone, MapPin, Crown, Shield } from "lucide-react";
 import Navigation from "../../components/layout/header/HeaderMenu";
+import { useAuthGuard } from "../../hooks/useAuthGuard";
+import { useNavigate } from "react-router-dom";
 
 export default function ProfileInterface() {
-  const [user] = useState({
-    "id": "4311a693-c40d-41fb-9cd1-d254e8e7563f",
-    "name": "Kirito",
-    "lastName": "Kazuto",
-    "phone": "9613456789",
-    "rol": "Estudiante",
-    "email": "carlos.ramirez@example.net",
-    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTn06STZg493koTKQBmngvHdQq4S9uejNTDrw&s",
-    "tipo_suscription": "Basico"
-  });
 
+  const {userData: user, logout} = useAuthGuard();
+  const navigate = useNavigate()
   const handleEdit = () => {
     console.log("Editar perfil");
   };
 
-  const handleLogout = () => {
-    console.log("Cerrar sesión");
-  };
+  if (!user) {
+  return <div className="min-h-screen flex items-center justify-center">Cargando perfil...</div>;
+}
 
-  const handleChangePlan = () => {
-    console.log("Cambio de plan")
-  }
 
   const getSubscriptionIcon = (type: string) => {
     switch (type.toLowerCase()) {
@@ -46,7 +37,7 @@ export default function ProfileInterface() {
         <div className="bg-gradient-to-r from-sky-400 to-blue-500 rounded-t-3xl h-48 relative flex items-center justify-center">
           <div className="relative">
             <img
-              src={user.image}
+              src={user.image || 'https://definicion.de/wp-content/uploads/2019/07/perfil-de-usuario.png'}
               alt={`${user.name} ${user.lastName}`}
               className="w-24 h-24 rounded-full border-4 border-white shadow-lg object-cover"
             />
@@ -64,7 +55,7 @@ export default function ProfileInterface() {
               {user.name} {user.lastName}
             </h1>
             <p className="text-gray-600 mb-2">{user.email}</p>
-            <p className="text-sm text-gray-500">Miembro desde Enero 2023</p>
+           
           </div>
 
           {/* Botones de acción */}
@@ -77,7 +68,7 @@ export default function ProfileInterface() {
               Editar Perfil
             </button>
             <button
-              onClick={handleChangePlan}
+              onClick={() => navigate('/plans')}
               className="flex items-center gap-2 px-6 py-2 bg-gray-200 hover:bg-gray-300 text-gray-700 rounded-lg transition-colors duration-200 text-sm font-medium border border-gray-300 hover:border-gray-400"
             >
               <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
@@ -87,7 +78,7 @@ export default function ProfileInterface() {
               Cambiar Plan
             </button>
             <button
-              onClick={handleLogout}
+              onClick={logout}
               className="flex items-center gap-2 px-6 py-2 bg-red-500 hover:bg-red-600 text-white rounded-lg transition-colors duration-200 text-sm font-medium"
             >
               <LogOut className="w-4 h-4" />
