@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { useState } from 'react';
 import { CssVarsProvider } from '@mui/joy/styles';
 import GlobalStyles from '@mui/joy/GlobalStyles';
 import CssBaseline from '@mui/joy/CssBaseline';
@@ -18,72 +18,96 @@ import Option from '@mui/joy/Option';
 import GoogleIcon from '../../components/icons/GoogleIcon';
 import BedIcon from '@mui/icons-material/Bed';
 import ImageLoginForm from '../../assets/ImageLoginForm.jpg';
-import type { JSX } from '@emotion/react/jsx-runtime';
+import useField from '../../hooks/useFields';
+import { useNavigate } from 'react-router-dom';
+import { RegisterService } from '../../service/auth/RegisterService';
+import { useAuthGuard } from '../../hooks/useAuthGuard';
+import ErrorMessage from '../../components/ui/Errors/ErrorMessage';
 
-// Types
-interface RegisterData {
-  name: string;
-  lastName: string;
-  phone: string;
-  rol: string;
-  email: string;
-  password: string;
-  confirmPassword: string;
-  acceptTerms: boolean;
-}
 
-export default function RegisterForm(): JSX.Element {
-  const [selectedRole, setSelectedRole] = React.useState<string>('');
+export default function RegisterForm() {
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>): void => {
-    event.preventDefault();
-    const formData = new FormData(event.currentTarget);
-    
-    const data: RegisterData = {
-      name: formData.get('name') as string,
-      lastName: formData.get('lastName') as string,
-      phone: formData.get('phone') as string,
-      rol: selectedRole,
-      email: formData.get('email') as string,
-      password: formData.get('password') as string,
-      confirmPassword: formData.get('confirmPassword') as string,
-      acceptTerms: formData.get('acceptTerms') === 'on',
-    };
+  const { login: savedDataUser } = useAuthGuard();
 
-    // Validación básica
-    if (data.password !== data.confirmPassword) {
-      alert('Las contraseñas no coinciden');
-      return;
+  const name = useField({ type: 'text' })
+  const lastName = useField({ type: 'text' })
+  const phone = useField({ type: 'phone' })
+  const email = useField({ type: 'email' })
+  const password = useField({ type: 'password' })
+  const [selectedRole, setSelectedRole] = useState<'' | 'Estudiante' | 'Propietario'>('');
+  const [errorMessage, setErrorMessage] = useState<string>('')
+  const [roleError, setRoleError] = useState(false);
+  const [acceptTerms, setAcceptTerms] = useState(false);
+  const [termsError, setTermsError] = useState(false);
+
+  const [isLoading, setIsLoading] = useState(false)
+  const navigate = useNavigate()
+
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    try {
+      event.preventDefault()
+      setIsLoading(true)
+      setErrorMessage('')
+      setRoleError(false)
+      setTermsError(false)
+
+      if (selectedRole === '') { 
+        setRoleError(true);
+        setIsLoading(false)
+        return;
+      }
+
+      if (!acceptTerms) {
+        setTermsError(true);
+        setIsLoading(false)
+        return;
+      }
+
+      const result = await RegisterService({
+        name: name.value,
+        lastName: lastName.value,
+        email: email.value,
+        password: password.value,
+        phone: phone.value,
+        rol: selectedRole
+      });
+
+      if (result) {
+        savedDataUser(result)
+        setTimeout(() => {
+          navigate('/residents')
+        }, 500)
+      } else {
+        setIsLoading(false)
+        setErrorMessage('Error desconocido al crear la cuenta.')
+      }
+    } catch (error) {
+      setIsLoading(false)
+      if (error instanceof Error) {
+        setErrorMessage(error.message)
+      } else {
+        setErrorMessage('Error desconocido al crear la cuenta.')
+      }
     }
-
-    if (!selectedRole) {
-      alert('Por favor selecciona un rol');
-      return;
-    }
-
-    if (!data.acceptTerms) {
-      alert('Debes aceptar los términos y condiciones');
-      return;
-    }
-
-    // Crear objeto final sin confirmPassword para envío
-    const finalData = {
-      name: data.name,
-      lastName: data.lastName,
-      phone: data.phone,
-      rol: data.rol,
-      email: data.email,
-      password: data.password
-    };
-
-    alert(JSON.stringify(finalData, null, 2));
-  };
+  }
 
   const handleRoleChange = (
     _event: React.SyntheticEvent | null,
     newValue: string | null
   ): void => {
-    setSelectedRole(newValue || '');
+    if (newValue === 'Estudiante' || newValue === 'Propietario') {
+      setSelectedRole(newValue);
+      setRoleError(false);
+    } else {
+      setSelectedRole('');
+    }
+  };
+
+  const handleTermsChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setAcceptTerms(event.target.checked);
+    if (event.target.checked) {
+      setTermsError(false);
+    }
   };
 
   return (
@@ -160,7 +184,7 @@ export default function RegisterForm(): JSX.Element {
                 </Typography>
                 <Typography level="body-sm">
                   Already have an account?{' '}
-                  <Link href="#replace-with-a-link" level="title-sm">
+                  <Link onClick = {() => navigate('/login')} level="title-sm">
                     Sign in!
                   </Link>
                 </Typography>
@@ -193,30 +217,66 @@ export default function RegisterForm(): JSX.Element {
                   >
                     <FormControl required sx={{ flex: 1 }}>
                       <FormLabel>Nombre</FormLabel>
-                      <Input 
-                        type="text" 
-                        name="name" 
+                      <Input
+                        type="text"
+                        name="name"
                         placeholder="Ingresa tu nombre"
+                        value={name.value}
+                        onChange={name.onChange}
+                        onBlur={name.onBlur}
                       />
                     </FormControl>
                     <FormControl required sx={{ flex: 1 }}>
                       <FormLabel>Apellidos</FormLabel>
-                      <Input 
-                        type="text" 
-                        name="lastName" 
+                      <Input
+                        type="text"
+                        name="lastName"
                         placeholder="Ingresa tus apellidos"
+                        value={lastName.value}
+                        onChange={lastName.onChange}
+                        onBlur={lastName.onBlur}
                       />
                     </FormControl>
                   </Box>
 
+                  {name.messageError && (
+                    <ErrorMessage
+                      message={name.messageError}
+                      type='error'
+                      variant='outlined'
+                      sx={{mt: 0.5}}
+                    />
+                  )}
+
+                  {lastName.messageError && (
+                    <ErrorMessage
+                      message={lastName.messageError}
+                      type='error'
+                      variant='outlined'
+                      sx={{mt: 0.5}}
+                    />
+                  )}
+
                   <FormControl required>
                     <FormLabel>Teléfono</FormLabel>
-                    <Input 
-                      type="tel" 
-                      name="phone" 
+                    <Input
+                      type="tel"
+                      name="phone"
                       placeholder="+52 961 123 4567"
+                      value={phone.value}
+                      onChange={phone.onChange}
+                      onBlur={phone.onBlur}
                     />
                   </FormControl>
+
+                  {phone.messageError && (
+                    <ErrorMessage
+                      message={phone.messageError}
+                      type='error'
+                      variant='outlined'
+                      sx={{mt: 0.5}}
+                    />
+                  )}
 
                   <FormControl required>
                     <FormLabel>Rol</FormLabel>
@@ -224,45 +284,73 @@ export default function RegisterForm(): JSX.Element {
                       placeholder="Selecciona tu rol"
                       value={selectedRole}
                       onChange={handleRoleChange}
+                      color={roleError ? 'danger' : 'neutral'}
                     >
                       <Option value="Estudiante">Estudiante</Option>
                       <Option value="Propietario">Propietario</Option>
                     </Select>
                   </FormControl>
 
+                  {roleError && (
+                    <ErrorMessage
+                      message="Por favor selecciona un rol"
+                      type='error'
+                      variant='outlined'
+                      sx={{mt: 0.5}}
+                    />
+                  )}
+
                   <FormControl required>
                     <FormLabel>Email</FormLabel>
-                    <Input 
-                      type="email" 
-                      name="email" 
+                    <Input
+                      type="email"
+                      name="email"
                       placeholder="ejemplo@correo.com"
+                      value={email.value}
+                      onChange={email.onChange}
+                      onBlur={email.onBlur}
                     />
                   </FormControl>
+
+                  {email.messageError && (
+                    <ErrorMessage
+                      message={email.messageError}
+                      type='error'
+                      variant='outlined'
+                      sx={{mt: 0.5}}
+                    />
+                  )}
 
                   <FormControl required>
                     <FormLabel>Contraseña</FormLabel>
-                    <Input 
-                      type="password" 
-                      name="password" 
+                    <Input
+                      type="password"
+                      name="password"
                       placeholder="Ingresa tu contraseña"
+                      value={password.value}
+                      onChange={password.onChange}
+                      onBlur={password.onBlur}
                     />
                   </FormControl>
-
-                  <FormControl required>
-                    <FormLabel>Confirmar contraseña</FormLabel>
-                    <Input 
-                      type="password" 
-                      name="confirmPassword" 
-                      placeholder="Confirma tu contraseña"
+                  
+                  {password.messageError && (
+                    <ErrorMessage
+                      message={password.messageError}
+                      type='error'
+                      variant='outlined'
+                      sx={{mt:0.5}}
                     />
-                  </FormControl>
+                  )}
                 </Stack>
 
                 <Stack sx={{ gap: 4, mt: 3 }}>
                   <FormControl required>
-                    <Checkbox 
-                      size="sm" 
+                    <Checkbox
+                      size="sm"
                       name="acceptTerms"
+                      checked={acceptTerms}
+                      onChange={handleTermsChange}
+                      color={termsError ? 'danger' : 'primary'}
                       label={
                         <Typography level="body-sm">
                           Acepto los{' '}
@@ -277,8 +365,31 @@ export default function RegisterForm(): JSX.Element {
                       }
                     />
                   </FormControl>
-                  <Button type="submit" fullWidth>
-                    Crear cuenta
+
+                  {termsError && (
+                    <ErrorMessage
+                      message="Debes aceptar los términos y condiciones"
+                      type='error'
+                      variant='outlined'
+                      sx={{mt: -2}}
+                    />
+                  )}
+
+                  {errorMessage && (
+                    <ErrorMessage
+                      message={errorMessage}
+                      type='error'
+                      variant='outlined'
+                    />
+                  )}
+
+                  <Button 
+                    type="submit" 
+                    fullWidth
+                    loading={isLoading}
+                    disabled={isLoading}
+                  >
+                    {isLoading ? 'Creando cuenta...' : 'Crear cuenta'}
                   </Button>
                 </Stack>
               </form>
