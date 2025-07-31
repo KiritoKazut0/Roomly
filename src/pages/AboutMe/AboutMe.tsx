@@ -23,28 +23,30 @@ interface Stat {
 const AboutPage: React.FC = () => {
   const teamMembers: TeamMember[] = [
     {
-      name: "María González",
-      position: "CEO & Fundadora",
-      image: "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=300&h=300&fit=crop&crop=face",
-      description: "Líder visionaria con más de 15 años de experiencia en tecnología y negocios."
+      name: "Norberto Lopez",
+      position: "CEO & Fundador",
+      image: "https://i.pinimg.com/736x/07/d7/66/07d7661566df51a8bcdb073885cb3fc0.jpg",
+       description: "Experto en desarrollo de software con pasión por la innovación tecnológica."
+      
     },
     {
-      name: "Carlos Hernández",
-      position: "CTO",
-      image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=300&h=300&fit=crop&crop=face",
-      description: "Experto en desarrollo de software con pasión por la innovación tecnológica."
+      name: "Margarita Olivera",
+      position: "Directora de Producto & Fundadora",
+      image: "https://i.imgur.com/xO7dsiy.jpeg",
+     description: "Especialista en UX/UI con enfoque en crear experiencias excepcionales para usuarios."
     },
     {
-      name: "Ana Martínez",
-      position: "Directora de Producto",
-      image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=300&h=300&fit=crop&crop=face",
-      description: "Especialista en UX/UI con enfoque en crear experiencias excepcionales para usuarios."
+      name: "Isai Lopez",
+      position: "CEO & Fundador",
+      image: "https://i.imgur.com/jQ6zx1o.jpeg",
+      description: "Líder visionario con más de 3 años de experiencia en tecnología y negocios."
+      
     },
     {
-      name: "Roberto Silva",
-      position: "Director de Ventas",
-      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=300&fit=crop&crop=face",
-      description: "Estratega comercial con amplia experiencia en crecimiento empresarial."
+      name: "Didier Mendoza",
+      position: "Desarrollador & Co-Fundador",
+      image: "https://i.imgur.com/nBjlUJs.jpeg",
+      description: "Desarrollador apasionado por la creación de soluciones innovadoras."
     }
   ];
 
@@ -78,12 +80,12 @@ const AboutPage: React.FC = () => {
       description: "Empresas que confían en nuestras soluciones"
     },
     {
-      number: "10+",
+      number: "1+",
       label: "Años de experiencia",
       description: "Creciendo y aprendiendo en el mercado"
     },
     {
-      number: "50+",
+      number: "25+",
       label: "Proyectos completados",
       description: "Soluciones implementadas con éxito"
     },
@@ -111,10 +113,8 @@ const AboutPage: React.FC = () => {
             Transformando ideas en soluciones tecnológicas
           </h2>
           <p className="text-lg text-gray-700 leading-relaxed mb-8">
-            Desde 2014, hemos ayudado a empresas de todos los tamaños a digitalizar sus procesos, 
-            optimizar sus operaciones y alcanzar sus objetivos a través de la tecnología. 
-            Nuestro enfoque se basa en entender profundamente las necesidades de cada cliente 
-            para crear soluciones personalizadas que generen un impacto real.
+            Desde 2025, en Softvana nos dedicamos a desarrollar soluciones tecnológicas que transforman la forma en que las personas viven, estudian y trabajan. Creamos plataformas digitales innovadoras como Roomly, con el objetivo de facilitar la vida cotidiana y resolver problemas reales a través de la tecnología.
+            Nuestro enfoque se basa en comprender a fondo las necesidades de cada cliente y usuario para construir herramientas funcionales, accesibles y con impacto tangible. En Softvana, no solo desarrollamos software: creamos experiencias que conectan.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <button className="bg-blue-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-blue-700 transition-colors">
@@ -149,9 +149,10 @@ const AboutPage: React.FC = () => {
               <h3 className="text-xl font-medium text-gray-900">Nuestra Misión</h3>
             </div>
             <p className="text-gray-700 leading-relaxed">
-              Empoderar a las empresas mediante soluciones tecnológicas innovadoras que simplifiquen 
-              sus procesos, mejoren su eficiencia y les permitan enfocarse en lo que realmente importa: 
-              hacer crecer su negocio y servir mejor a sus clientes.
+              Desarrollar soluciones tecnológicas innovadoras, accesibles y 
+              centradas en el usuario, que resuelvan problemas reales y aporten
+              valor a personas, empresas y comunidades. En Softvana, trabajamos 
+              para transformar ideas en productos digitales con impacto.
             </p>
           </div>
 
@@ -161,9 +162,10 @@ const AboutPage: React.FC = () => {
               <h3 className="text-xl font-medium text-gray-900">Nuestra Visión</h3>
             </div>
             <p className="text-gray-700 leading-relaxed">
-              Ser la empresa líder en transformación digital en México, reconocida por la calidad 
-              de nuestras soluciones, la excelencia en el servicio al cliente y nuestro compromiso 
-              con la innovación tecnológica sostenible.
+             Ser una empresa líder en el desarrollo de software en América Latina,
+            reconocida por su enfoque humano, su capacidad de innovación y su compromiso
+              con la calidad. Aspiramos a mejorar la vida de millones de personas mediante
+             herramientas tecnológicas útiles, confiables y sostenibles.
             </p>
           </div>
         </div>

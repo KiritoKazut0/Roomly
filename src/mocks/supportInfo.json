@@ -1,5 +1,13 @@
 [
     {
+      "question": "¿Qué es Roomly?",
+      "answer": "Roomly es una plataforma desarrollada por Softvana que conecta a personas que buscan cuartos con quienes desean rentarlos, especialmente cerca de universidades."
+    },
+     {
+      "question": "¿Cómo puedo publicar un cuarto en Roomly?",
+      "answer": "Solo necesitas crear una cuenta, llenar los datos del cuarto (precio, ubicación, fotos, servicios, etc.) y publicarlo. ¡Así de fácil!"
+    },
+    {
       "question": "¿Cómo puedo restablecer mi contraseña?",
       "answer": "Puedes restablecer tu contraseña haciendo clic en 'Olvidé mi contraseña' en la página de inicio de sesión. Te enviaremos un enlace por correo electrónico."
     },
@@ -14,5 +22,30 @@
     {
       "question": "¿Cómo contacto al soporte técnico?",
       "answer": "Puedes contactarnos a través del chat en vivo, correo electrónico o teléfono. Todas las opciones están disponibles en esta página."
+    },{
+      "question": "¿Tiene algún costo usar Roomly?",
+      "answer": "Roomly ofrece una suscripción Básica gratuita y una Premium de $120 MXN con beneficios exclusivos como mayor visibilidad y soporte prioritario."
+    },{
+      "question":"¿Qué beneficios obtengo con la suscripción Premium?",
+      "answer": "Mayor visibilidad en las búsquedas, anuncios destacados, estadísticas de visitas, acceso anticipado a nuevos listados y más."
+    }
+    ,{
+      "question": "¿Cómo puedo cancelar mi suscripción?",
+      "answer": "Puedes cancelar tu suscripción en cualquier momento desde la sección Configuración > Facturación de tu cuenta."
+    },{
+      "question": " ¿Puedo buscar cuartos sin estar registrado?",
+      "answer": "Sí, puedes explorar los anuncios sin cuenta, pero para contactar arrendadores o guardar favoritos necesitas registrarte."
+    },{
+      "question":"¿Qué tipo de cuartos se publican en Roomly?",
+      "answer": "Se publican cuartos individuales, compartidos o departamentos completos, principalmente cerca de universidades."
+    },{
+      "question": "¿Roomly verifica los anuncios publicados?",
+      "answer": "Revisamos los anuncios para asegurar que cumplan con nuestras políticas, pero siempre recomendamos visitar el lugar y confirmar detalles antes de concretar un trato."
+    },{
+      "question": "¿Puedo editar o eliminar mi publicación?",
+      "answer": "Sí. Desde tu perfil puedes gestionar tus publicaciones, editarlas o eliminarlas cuando quieras."
+    },{
+      "question": "¿Roomly actúa como intermediario en los pagos?",
+      "answer": "No. Roomly solo conecta a las personas. Los acuerdos y pagos se hacen directamente entre inquilinos y arrendadores."
     }
   ]

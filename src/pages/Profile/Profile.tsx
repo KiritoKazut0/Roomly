@@ -123,16 +123,6 @@ export default function ProfileInterface() {
                 </div>
 
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center">
-                    {getSubscriptionIcon(user.tipo_suscription)}
-                  </div>
-                  <div>
-                    <p className="text-sm text-gray-500">Suscripción</p>
-                    <p className="font-medium text-gray-800">{user.tipo_suscription}</p>
-                  </div>
-                </div>
-
-                <div className="flex items-center gap-3">
                   <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
                     <Mail className="w-5 h-5 text-blue-600" />
                   </div>

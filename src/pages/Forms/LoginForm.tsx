@@ -106,7 +106,7 @@ export default function LoginForm() {
                   Sign in
                 </Typography>
                 <Typography level="body-sm">
-                  New to company?{' '}
+                  New on our platform?{' '}
                   <Link href="#replace-with-a-link" level="title-sm">
                     Sign up!
                   </Link>

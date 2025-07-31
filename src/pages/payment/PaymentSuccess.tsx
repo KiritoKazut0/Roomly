@@ -72,7 +72,7 @@ export default function PaymentSuccess() {
           <div className="bg-gradient-to-r from-emerald-50 to-teal-50 rounded-2xl p-4 mb-6 border border-emerald-100">
             <div className="flex justify-between items-center mb-2">
               <span className="text-sm text-gray-600">Monto:</span>
-              <span className="text-lg font-bold text-emerald-600">$150.00 MXN</span>
+              <span className="text-lg font-bold text-emerald-600">$120.00 MXN</span>
             </div>
             <div className="flex justify-between items-center">
               <span className="text-sm text-gray-600">Fecha:</span>
@@ -97,11 +97,15 @@ export default function PaymentSuccess() {
               </div>
               <div className="flex items-center gap-2">
                 <CheckCircle className="w-4 h-4 text-emerald-500 flex-shrink-0" />
-                <span className="text-sm text-gray-700">Sin límites de almacenamiento</span>
+                <span className="text-sm text-gray-700">Publicaciones ilimitadas</span>
               </div>
               <div className="flex items-center gap-2">
                 <CheckCircle className="w-4 h-4 text-emerald-500 flex-shrink-0" />
-                <span className="text-sm text-gray-700">Análisis avanzados y reportes</span>
+                <span className="text-sm text-gray-700">Primero en los resultados de búsqueda</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <CheckCircle className="w-4 h-4 text-emerald-500 flex-shrink-0" />
+                <span className="text-sm text-gray-700">Sin anuncios</span>
               </div>
             </div>
           </div>
@@ -121,7 +125,7 @@ export default function PaymentSuccess() {
               <div className="text-left">
                 <p className="text-sm font-medium text-blue-800 mb-1">¡Gracias por tu compra!</p>
                 <p className="text-xs text-blue-600">
-                  Recibirás un correo de confirmación en los próximos minutos con todos los detalles de tu pedido.
+                  Roomly te agradece, en breve recibirás un correo de confirmación en los próximos minutos con todos los detalles de tu pedido.
                 </p>
               </div>
             </div>

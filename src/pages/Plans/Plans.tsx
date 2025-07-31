@@ -25,15 +25,14 @@ const PlansPage: React.FC = () => {
     {
       id: 'basic',
       name: 'Plan Básico',
-      price: '$299',
+      price: '$0',
       period: '/mes',
-      description: 'Perfecto para pequeñas empresas que están comenzando su transformación digital.',
+      description: 'Con el Plan Básico puedes empezar a usar Roomly sin costo. Ideal para quienes desean explorar la plataforma, buscar cuartos o hacer su primera publicación.',
       features: [
-        'Hasta 5 usuarios',
+        'Hasta 1 usuario',
         'Soporte por email',
-        'Almacenamiento de 10GB',
-        'Reportes básicos',
-        'Integración con 3 apps',
+        'Almacenamiento gratis',
+        'Contacto directo a través del sistema de mensajería',
         'Actualizaciones estándar'
       ],
       buttonText: 'Comenzar con Básico',
@@ -42,20 +41,20 @@ const PlansPage: React.FC = () => {
     {
       id: 'premium',
       name: 'Plan Premium',
-      price: '$599',
+      price: '$120',
       period: '/mes',
-      description: 'La solución completa para empresas que buscan maximizar su productividad.',
+      description: 'El Plan Premium está diseñado para quienes quieren destacar sus publicaciones y tener acceso a herramientas avanzadas. Ideal para arrendadores con varios cuartos o quienes buscan mayor visibilidad y control.',
       popular: true,
       features: [
-        'Usuarios ilimitados',
+        'Publicaciones ilimitadas de cuartos',
         'Soporte prioritario 24/7',
         'Almacenamiento ilimitado',
-        'Reportes avanzados y analytics',
+        'Mayor visibilidad en los resultados de búsqueda.',
         'Integraciones ilimitadas',
         'Actualizaciones prioritarias',
         'Consultoría personalizada',
-        'API personalizada',
-        'Gestión de usuarios avanzada'
+        'Soporte prioritario',
+        'Navegación sin anuncios'
       ],
       buttonText: 'Comenzar con Premium',
       buttonVariant: 'primary'
@@ -63,11 +62,9 @@ const PlansPage: React.FC = () => {
   ];
 
   const detailedFeatures: PlanFeature[] = [
-    { name: 'Número de usuarios', basic: '5 usuarios', premium: 'Ilimitados' },
-    { name: 'Almacenamiento', basic: '10 GB', premium: 'Ilimitado' },
+    { name: 'Número de usuarios', basic: '1 usuarios', premium: 'Ilimitados' },
+    { name: 'Almacenamiento', basic: 'gratis', premium: 'Ilimitado' },
     { name: 'Soporte técnico', basic: 'Email (48h)', premium: '24/7 Prioritario' },
-    { name: 'Reportes y analytics', basic: 'Básicos', premium: 'Avanzados + BI' },
-    { name: 'Integraciones', basic: 'Hasta 3 apps', premium: 'Ilimitadas' },
     { name: 'API personalizada', basic: false, premium: true },
     { name: 'Consultoría incluida', basic: false, premium: true },
     { name: 'Gestión de permisos', basic: 'Simple', premium: 'Avanzada' },
@@ -83,7 +80,7 @@ const PlansPage: React.FC = () => {
       <div className="bg-white border-b">
         <div className="max-w-6xl mx-auto px-4 py-8">
           <h1 className="text-3xl font-light text-gray-900 mb-2">Planes y Precios</h1>
-          <p className="text-gray-600">Elige el plan que mejor se adapte a las necesidades de tu empresa.</p>
+          <p className="text-gray-600">Elige el plan que mejor se adapte a las necesidades de ti.</p>
         </div>
       </div>
 

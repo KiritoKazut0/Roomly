@@ -33,12 +33,12 @@ const ContactPage: React.FC = () => {
     {
       icon: <Mail className="w-6 h-6" />,
       title: "Correo electrónico",
-      details: ["support@empresa.com", "contacto@empresa.com"]
+      details: ["Roomly@support.com", "Roomly@Premiumcustomer.com"]
     },
     {
       icon: <Phone className="w-6 h-6" />,
       title: "Teléfono",
-      details: ["+52 123 456 7890", "Lun - Vie: 9:00 - 18:00"]
+      details: ["+52 961 107 75 41", "Lun - Vie: 9:00 - 18:00"]
     },
     {
       icon: <MapPin className="w-6 h-6" />,

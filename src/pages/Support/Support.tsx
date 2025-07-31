@@ -30,13 +30,13 @@ const SupportPage: React.FC = () => {
     {
       icon: <Mail className="w-6 h-6" />,
       title: "Correo electrónico",
-      description: "support@empresa.com",
+      description: "Roomly@support.com",
       action: "Enviar email"
     },
     {
       icon: <Phone className="w-6 h-6" />,
       title: "Teléfono",
-      description: "+52 123 456 7890",
+      description: "+52 961 107 75 41",
       action: "Llamar ahora"
     }
   ];
